@@ -6,7 +6,6 @@ import styled from "@emotion/styled";
 import { Typography } from "antd";
 import { useProjects } from "../../utils/project";
 import { useUsers } from "../../utils/user";
-import { Test } from "../../components/test-closure";
 export const ProjectListScreen = () => {
   const [param, setParam] = useState({
     name: "",
@@ -24,7 +23,6 @@ export const ProjectListScreen = () => {
       {/* <Helmet>
         <title>项目列表</title>
       </Helmet> */}
-      <Test />
       <h1>项目列表</h1>
       <SearchPanel users={users || []} param={param} setParam={setParam} />
       {error ? (
