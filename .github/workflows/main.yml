@@ -26,10 +26,12 @@ jobs:
         uses: actions/setup-node@v3.3.0
         with: 
           node-version: "16.X"
+      - name: install yarn
+        run: npm install yarn
       - name: install deps
-        run: npm install
+        run: yarn
       - name: build app
-        run: npm run build
+        run: yarn build
       - name: copy dist file with scp
         uses: appleboy/scp-action@v0.0.1
         with:
