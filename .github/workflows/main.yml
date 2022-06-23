@@ -27,7 +27,9 @@ jobs:
         with: 
           node-version: "16.X"
       - name: install yarn
-        run: npm install yarn
+        uses: CultureHQ/actions-yarn@master
+        with:
+          args: install
       - name: install deps
         run: yarn
       - name: build app
