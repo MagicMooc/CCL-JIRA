@@ -26,7 +26,7 @@ jobs:
         uses: actions/setup-node@v3.3.0
         with: 
           node-version: "16.X"
-       - name: Yarn setup
+      - name: Yarn setup
         uses: DerYeger/yarn-setup-action@master
         with:
         node-version: 16
