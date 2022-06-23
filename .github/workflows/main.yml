@@ -26,10 +26,14 @@ jobs:
         uses: actions/setup-node@v3.3.0
         with: 
           node-version: "16.X"
-      - name: install yarn
-        uses: "comchangs/action-yarn@master"
-        args: "yarn install; yarn build"
-
+       - name: Yarn setup
+        uses: DerYeger/yarn-setup-action@master
+        with:
+        node-version: 16
+      - name: install deps
+        run: yarn
+      - name: build app
+        run: yarn build
       - name: copy dist file with scp
         uses: appleboy/scp-action@v0.0.1
         with:
