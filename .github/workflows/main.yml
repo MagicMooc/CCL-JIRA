@@ -27,13 +27,9 @@ jobs:
         with: 
           node-version: "16.X"
       - name: install yarn
-        uses: CultureHQ/actions-yarn@master
-        with:
-          args: install
-      - name: install deps
-        run: yarn
-      - name: build app
-        run: yarn build
+        uses: "comchangs/action-yarn@master"
+        args: "yarn install; yarn build"
+
       - name: copy dist file with scp
         uses: appleboy/scp-action@v0.0.1
         with:
