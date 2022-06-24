@@ -7,11 +7,13 @@ import { Project } from "../../types/project";
 import { User } from "../../types/user";
 interface ListProps extends TableProps<Project> {
   users: User[];
+  refresh?: () => void;
 }
 
 export const List = ({ users, ...props }: ListProps) => {
   const { mutate } = useEditProject();
-  const pinProject = (id: number) => (pin: boolean) => mutate({ id, pin });
+  const pinProject = (id: number) => (pin: boolean) =>
+    mutate({ id, pin }).then(props.refresh);
   return (
     <Table
       rowKey={"id"}

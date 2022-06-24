@@ -17,11 +17,11 @@ const add = test();
 const unmount = add();
 // 再一次执行effect函数，返回引用了message2的unmount函数
 add();
-// message3
+// 再一次执行effect函数，返回引用了message3的unmount函数
 add();
-// message4
+// 再一次执行effect函数，返回引用了message4的unmount函数
 add();
-// message5
+// 再一次执行effect函数，返回引用了message5的unmount函数
 add();
 unmount(); // 在这里会打印什么呢？按照直觉似乎应该打印3,实际上打印了1
 
