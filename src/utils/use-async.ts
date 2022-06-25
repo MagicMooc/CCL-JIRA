@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useReducer, useState } from "react";
 import { useMountedRef } from "./index";
 
 interface State<D> {
@@ -17,17 +17,28 @@ const defaultConfig = {
   throwOnError: false,
 };
 
+const useSafeDispatch = <T>(dispatch: (...args: T[]) => void) => {
+  const mountedRef = useMountedRef();
+  return useCallback(
+    (...args: T[]) => (mountedRef.current ? dispatch(...args) : void 0),
+    [dispatch, mountedRef]
+  );
+};
+
 export const useAsync = <D>(
   initialState?: State<D>,
   initialConfig?: typeof defaultConfig
 ) => {
   const config = { ...defaultConfig, ...initialConfig };
-  const [state, setState] = useState<State<D>>({
-    ...defaultInitialState,
-    ...initialState,
-  });
+  const [state, dispatch] = useReducer(
+    (state: State<D>, action: Partial<State<D>>) => ({ ...state, ...action }),
+    {
+      ...defaultInitialState,
+      ...initialState,
+    }
+  );
 
-  const mountedRef = useMountedRef();
+  const safeDispatch = useSafeDispatch(dispatch);
 
   // useState直接传入函数的含义是：惰性初始化；所以，要用useState保存函数，不能直接传入函数
   // () => () => {}
@@ -35,22 +46,22 @@ export const useAsync = <D>(
 
   const setData = useCallback(
     (data: D) =>
-      setState({
+      safeDispatch({
         data,
         stat: "success",
         error: null,
       }),
-    []
+    [safeDispatch]
   );
 
   const setError = useCallback(
     (error: Error) =>
-      setState({
+      safeDispatch({
         error,
         stat: "error",
         data: null,
       }),
-    []
+    [safeDispatch]
   );
 
   // run 用来触发异步请求
@@ -65,12 +76,10 @@ export const useAsync = <D>(
           run(runConfig?.retry(), runConfig);
         }
       });
-      setState((prevState) => ({ ...prevState, stat: "loading" }));
+      safeDispatch({ stat: "loading" });
       return promise
         .then((data: D) => {
-          if (mountedRef.current) {
-            setData(data);
-          }
+          setData(data);
           return data;
         })
         .catch((error) => {
@@ -81,7 +90,7 @@ export const useAsync = <D>(
           return error;
         });
     },
-    [config.throwOnError, mountedRef, setData, setError]
+    [config.throwOnError, setData, setError, safeDispatch]
   );
 
   return {
