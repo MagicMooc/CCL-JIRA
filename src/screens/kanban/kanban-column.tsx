@@ -57,9 +57,6 @@ export const KanbanColumn = React.forwardRef<
         <More kanban={kanban} key={kanban.id} />
       </Row>
       <TasksContainer>
-        {tasks?.map((task) => (
-          <TaskCard key={task.id} task={task} />
-        ))}
         <Drop
           type={"ROW"}
           direction={"vertical"}
