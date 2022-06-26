@@ -6,7 +6,7 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="task" sketch:type="MSArtboardGroup">
+        <g id="task" sketch:type="MSArtKanbanGroup">
             <g id="Task" sketch:type="MSLayerGroup" transform="translate(1.000000, 1.000000)">
                 <rect id="Rectangle-36" fill="#4BADE8" sketch:type="MSShapeGroup" x="0" y="0" width="14" height="14" rx="2"></rect>
                 <g id="Page-1" transform="translate(4.000000, 4.500000)" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" sketch:type="MSShapeGroup">

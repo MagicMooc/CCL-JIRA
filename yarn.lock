@@ -2763,7 +2763,7 @@ antd@^4.21.3, antd@^4.9.1:
     "@babel/runtime" "^7.12.5"
     "@ctrl/tinycolor" "^3.4.0"
     classnames "^2.2.6"
-    copy-to-clipboard "^3.2.0"
+    copy-to-clipKanban "^3.2.0"
     lodash "^4.17.21"
     memoize-one "^6.0.0"
     moment "^2.29.2"
@@ -4173,9 +4173,9 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.npmmirror.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha512-XgZ0pFcakEUlbwQEVNg3+QAis1FyTL3Qel9FYy8pSkQqoG3PNoT0bOCQtOXcOkur21r2Eq2kI+IE+gsmAEVlYw==
 
-copy-to-clipboard@^3.2.0:
+copy-to-clipKanban@^3.2.0:
   version "3.3.1"
-  resolved "https://registry.npmmirror.com/copy-to-clipboard/-/copy-to-clipboard-3.3.1.tgz#115aa1a9998ffab6196f93076ad6da3b913662ae"
+  resolved "https://registry.npmmirror.com/copy-to-clipKanban/-/copy-to-clipKanban-3.3.1.tgz#115aa1a9998ffab6196f93076ad6da3b913662ae"
   integrity sha512-i13qo6kIHTTpCm8/Wup+0b1mVWETvu2kIMzKoK8FpkLkFxlt0znUAHcMzox+T8sPlqtZXq3CulEjQHsYiGFJUw==
   dependencies:
     toggle-selection "^1.0.6"
