@@ -1,4 +1,6 @@
 import { QueryKey, useQueryClient } from "react-query";
+import { reorder } from "utils/reorder";
+import { Task } from "types/task";
 
 export const useConfig = (
   queryKey: QueryKey,
@@ -38,5 +40,15 @@ export const useAddConfig = (queryKey: QueryKey) =>
     return old ? [...old, target] : [target];
   });
 
-export const useReorderConfig = (queryKey: QueryKey) =>
-  useConfig(queryKey, (target, old) => old || []);
+export const useReorderKanbanConfig = (queryKey: QueryKey) =>
+  useConfig(queryKey, (target, old) => reorder({ list: old, ...target }));
+
+export const useReorderTaskConfig = (queryKey: QueryKey) =>
+  useConfig(queryKey, (target, old) => {
+    const orderedList = reorder({ list: old, ...target }) as Task[];
+    return orderedList.map((item) =>
+      item.id === target.fromId
+        ? { ...item, kanbanId: target.toKanbanId }
+        : item
+    );
+  });
