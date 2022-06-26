@@ -31,7 +31,15 @@ export const ProjectScreen = () => {
           <Route path={"/kanban"} element={<KanbanScreen />} />
           {/*projects/:projectId/epic*/}
           <Route path={"/epic"} element={<EpicScreen />} />
-          <Navigate to={window.location.pathname + "/kanban"} replace={true} />
+          <Route
+            path="*"
+            element={
+              <Navigate
+                to={window.location.pathname + "/kanban"}
+                replace={true}
+              />
+            }
+          />
         </Routes>
       </Main>
     </Container>
@@ -46,6 +54,7 @@ const Aside = styled.aside`
 const Main = styled.div`
   box-shadow: -5px 0 5px -5px rgba(0, 0, 0, 0.1);
   display: flex;
+  overflow: hidden;
 `;
 
 const Container = styled.div`
