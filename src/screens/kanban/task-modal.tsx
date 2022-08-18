@@ -5,6 +5,7 @@ import { useDeleteTask, useEditTask } from "utils/task";
 import { Button, Form, Input, Modal } from "antd";
 import { UserSelect } from "components/user-select";
 import { TaskTypeSelect } from "components/task-type-select";
+import { EpicSelect } from "components/epic-select";
 
 const layout = {
   labelCol: { span: 8 },
@@ -63,6 +64,9 @@ export const TaskModal = () => {
           rules={[{ required: true, message: "请输入任务名" }]}
         >
           <Input />
+        </Form.Item>
+        <Form.Item label={"任务组"} name={"epicId"}>
+          <EpicSelect defaultOptionName={"任务组"} />
         </Form.Item>
         <Form.Item label={"经办人"} name={"processorId"}>
           <UserSelect defaultOptionName={"经办人"} />

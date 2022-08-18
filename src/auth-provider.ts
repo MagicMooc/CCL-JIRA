@@ -19,10 +19,12 @@ export const login = (data: { username: string; password: string }) => {
     },
     body: JSON.stringify(data),
   }).then(async (response: Response) => {
+    let tmp = await response.json();
+    // console.log(tmp);
     if (response.ok) {
-      return handleUserResponse(await response.json());
+      return handleUserResponse(tmp);
     } else {
-      return Promise.reject(await response.json());
+      return Promise.reject(tmp);
     }
   });
 };
@@ -35,10 +37,12 @@ export const register = (data: { username: string; password: string }) => {
     },
     body: JSON.stringify(data),
   }).then(async (response: Response) => {
+    let tmp = await response.json();
+    // console.log(tmp);
     if (response.ok) {
-      return handleUserResponse(await response.json());
+      return handleUserResponse(tmp);
     } else {
-      return Promise.reject(await response.json());
+      return Promise.reject(tmp);
     }
   });
 };

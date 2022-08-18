@@ -22,11 +22,16 @@ export const http = async (
     },
     ...customConfig,
   };
+  // console.log(data);
   if (config.method.toUpperCase() === "GET") {
     endpoint += `?${qs.stringify(data)}`;
   } else {
     config.body = JSON.stringify(data || {});
   }
+  // console.log(`API地址: ${apiUrl}/${endpoint}`);
+  // console.log("---");
+  // console.log(config);
+  // console.log("----");
 
   // axios 和 fetch 的 表现不一样，axios可以直接在返回状态不为2xx的时候抛出异常
   return window
@@ -38,6 +43,8 @@ export const http = async (
         return Promise.reject({ message: "请重新登录" });
       }
       const data = await response.json();
+      // console.log(endpoint);
+      // console.log(data);
       if (response.ok) {
         return data;
       } else {
@@ -54,8 +61,9 @@ export const http = async (
 export const useHttp = () => {
   const { user } = useAuth();
   return useCallback(
-    (...[endpoint, config]: Parameters<typeof http>) =>
-      http(endpoint, { ...config, token: user?.token }),
+    (...[endpoint, config]: Parameters<typeof http>) => {
+      return http(endpoint, { ...config, token: user?.token });
+    },
     [user?.token]
   );
 };

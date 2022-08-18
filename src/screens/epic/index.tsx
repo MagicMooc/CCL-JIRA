@@ -27,6 +27,7 @@ export const EpicScreen = () => {
       },
     });
   };
+  // console.log(epics);
 
   return (
     <ScreenContainer>
