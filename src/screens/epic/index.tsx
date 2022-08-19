@@ -63,12 +63,14 @@ export const EpicScreen = () => {
               {tasks
                 ?.filter((task) => task.epicId === epic.id)
                 .map((task) => (
-                  <Link
-                    to={`/projects/${currentProject?.id}/kanban?editingTaskId=${task.id}`}
-                    key={task.id}
-                  >
-                    {task.name}
-                  </Link>
+                  <div>
+                    <Link
+                      to={`/projects/${currentProject?.id}/kanban?editingTaskId=${task.id}`}
+                      key={task.id}
+                    >
+                      {task.name}
+                    </Link>
+                  </div>
                 ))}
             </div>
           </List.Item>
