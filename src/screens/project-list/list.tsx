@@ -22,6 +22,7 @@ export const List = ({ users, ...props }: ListProps) => {
     <Table
       rowKey={"id"}
       pagination={false}
+      style={{ overflow: "scroll" }}
       columns={[
         {
           title: <Pin checked={true} disabled={true} />,
