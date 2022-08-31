@@ -34,7 +34,7 @@ export const CreateTask = ({ kanbanId }: { kanbanId: number }) => {
         marginBottom: "0.5rem",
         cursor: "pointer",
         borderRadius: "2rem",
-        backgroundColor: "rgba(149,237,17,0.3)",
+        backgroundColor: "rgba(242, 172, 159, 0.3)",
       }}
     >
       <Input

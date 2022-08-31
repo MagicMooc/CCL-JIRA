@@ -33,11 +33,13 @@ const TaskCard = ({ task }: { task: Task }) => {
   return (
     <Card
       onClick={() => startEdit(task.id)}
+      bordered={true}
       style={{
         marginBottom: "0.5rem",
         cursor: "pointer",
-        borderRadius: "2rem",
-        backgroundColor: "rgba(149,237,17,0.3)",
+        borderRadius: "1.5rem",
+        backgroundColor: "rgba(242, 172, 159, 0.3)",
+        border: "0.3rem solid black",
       }}
       key={task.id}
     >
@@ -58,7 +60,7 @@ export const KanbanColumn = React.forwardRef<
   return (
     <Container {...props} ref={ref}>
       <Row between={true}>
-        <h3>{kanban.name}</h3>
+        <h3 style={{ textAlign: "center" }}>{kanban.name}</h3>
         <More kanban={kanban} key={kanban.id} />
       </Row>
       <TasksContainer>
@@ -123,6 +125,7 @@ export const Container = styled.div`
   flex-direction: column;
   padding: 0.7rem 0.7rem 1rem;
   margin-right: 1.5rem;
+  box-shadow: 1rem 1rem 1rem rgba(245, 201, 90, 0.9);
 `;
 
 const TasksContainer = styled.div`
