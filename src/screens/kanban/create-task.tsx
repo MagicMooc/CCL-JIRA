@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styled from "@emotion/styled";
 import { useAddTask } from "utils/task";
 import { useProjectIdInUrl, useTasksQueryKey } from "screens/kanban/util";
 import { Card, Input } from "antd";
@@ -24,11 +25,18 @@ export const CreateTask = ({ kanbanId }: { kanbanId: number }) => {
   }, [inputMode]);
 
   if (!inputMode) {
-    return <div onClick={toggle}>+创建事务</div>;
+    return <CreateTaskButton onClick={toggle}>创建任务</CreateTaskButton>;
   }
 
   return (
-    <Card>
+    <Card
+      style={{
+        marginBottom: "0.5rem",
+        cursor: "pointer",
+        borderRadius: "2rem",
+        backgroundColor: "rgba(149,237,17,0.3)",
+      }}
+    >
       <Input
         onBlur={toggle}
         placeholder={"需要做些什么"}
@@ -40,3 +48,9 @@ export const CreateTask = ({ kanbanId }: { kanbanId: number }) => {
     </Card>
   );
 };
+
+const CreateTaskButton = styled.div`
+  border-radius: 1.5rem;
+  background-color: rgba(242, 172, 159, 0.3);
+  text-align: center;
+`;

@@ -33,10 +33,15 @@ const TaskCard = ({ task }: { task: Task }) => {
   return (
     <Card
       onClick={() => startEdit(task.id)}
-      style={{ marginBottom: "0.5rem", cursor: "pointer" }}
+      style={{
+        marginBottom: "0.5rem",
+        cursor: "pointer",
+        borderRadius: "2rem",
+        backgroundColor: "rgba(149,237,17,0.3)",
+      }}
       key={task.id}
     >
-      <p>
+      <p style={{ textAlign: "center" }}>
         <Mark keyword={keyword} name={task.name} />
       </p>
       <TaskTypeIcon id={task.typeId} />
@@ -112,8 +117,8 @@ const More = ({ kanban }: { kanban: Kanban }) => {
 
 export const Container = styled.div`
   min-width: 27rem;
-  border-radius: 6px;
-  background-color: rgb(244, 245, 247);
+  border-radius: 1.5rem;
+  background-color: rgba(245, 201, 90, 0.3);
   display: flex;
   flex-direction: column;
   padding: 0.7rem 0.7rem 1rem;
